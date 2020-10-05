@@ -185,15 +185,15 @@ f=figure();
 % This deals wiht where the contours get to the edge of the model domain i.e. surface and CMB
 get_caps=isocaps(data,vel_lim,'below');
 col_1=get_caps.vertices(:,3);
-patch(get_caps,'FaceVertexCData',col_1,'FaceColor','interp','EdgeColor','none','FaceAlpha',.8);
-colormap('Autumn');
+patch(get_caps,'FaceVertexCData',col_1,'FaceColor','interp','EdgeColor','none','FaceAlpha',1);
+colormap(flipud(jet));
 hold on
 
 % This part deals wiht the outside edge of the plumes - i.e. the velocity contour
 get_surf=isosurface(data,vel_lim);
 col_2=get_surf.vertices(:,3);
-p1 = patch(get_surf,'FaceVertexCData',col_2,'FaceColor','interp','EdgeColor','none','FaceAlpha',.8);
-colormap('Autumn');
+p1 = patch(get_surf,'FaceVertexCData',col_2,'FaceColor','interp','EdgeColor','none','FaceAlpha',1);
+colormap(flipud(jet));
 isonormals(data,p1);
 
 view([45,30]); 
@@ -224,15 +224,16 @@ C(:,1)=(coastlon);
 C(:,2)=(coastcolat);
 hold on
 
-plot3(C(:,1),C(:,2),C(:,3),'-','Color', 'k')
+plot3(C(:,1),C(:,2),C(:,3),'-','Color', 'k','LineWidth',2)
 
 set(gca,'FontSize',14)
 set(gca,'box','on')
 camlight left
 daspect([.2,.2,1])
-lighting gouraud
 
-saveas(f,'../3D_corrections/synth_3d_plot.png','png')
+lighting flat
+
+saveas(f,'../3D_model_info/synth_3d_plot.png','png')
 
 
 

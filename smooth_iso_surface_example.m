@@ -13,4 +13,4 @@ axis vis3d tight
 camlight left
 colormap('hot');
 % daspect([.4,.4,1])
-lighting gouraud
+% lighting gouraud
